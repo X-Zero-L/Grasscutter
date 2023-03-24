@@ -62,10 +62,7 @@ class MlgmXyysd_Genshin_Impact_Proxy:
 
     def request(self, flow: http.HTTPFlow) -> None:
         if flow.request.host in self.LIST_DOMAINS:
-            if USE_SSL:
-                flow.request.scheme = "https"
-            else:
-                flow.request.scheme = "http"
+            flow.request.scheme = "https" if USE_SSL else "http"
             flow.request.host = REMOTE_HOST
             flow.request.port = REMOTE_PORT
 
